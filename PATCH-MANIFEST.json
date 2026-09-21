@@ -1,0 +1,750 @@
+{
+  "format": "devilhood-esa-patch-v3",
+  "release": "1.9.2.9-community-dx12-x64-scheduler-hardened",
+  "patcher_version": "3.0.0",
+  "producer": "DeViLhoOD",
+  "build_timestamp_utc": "2026-09-21T12:00:00Z",
+  "host": {
+    "input": {
+      "filename": "foo_enhanced_spectrum_analyzer.dll",
+      "version": "1.9.2.0",
+      "architecture": "x86-64",
+      "size": 138752,
+      "sha256": "7d49351661573a9ee27c8578ecdc66678289d2bdb531b43a1185df76ddb16b54"
+    },
+    "pre_scheduler_output": {
+      "filename": "foo_enhanced_spectrum_analyzer.dll",
+      "version": "1.9.2.9",
+      "architecture": "x86-64",
+      "size": 146432,
+      "sha256": "d5f001d863429fc3f9c29e8aa4557bb5660da1d1f9194effb239ba1e0b56d859"
+    },
+    "output": {
+      "filename": "foo_enhanced_spectrum_analyzer.dll",
+      "version": "1.9.2.9",
+      "architecture": "x86-64",
+      "size": 163328,
+      "sha256": "134fdb5d5844e0df6663c04a2f7b792c375a21b47e9f85637a2ce95dcdf77148"
+    },
+    "base_transform": {
+      "description": "Original 1.9.2.0 x64 to the previously validated 1.9.2.9 Community DX12 host, reconstructed in memory only.",
+      "inherited_writes": [
+        {
+          "offset": 270,
+          "replacement_hex": "08"
+        },
+        {
+          "offset": 272,
+          "replacement_hex": "8015966a"
+        },
+        {
+          "offset": 293,
+          "replacement_hex": "46"
+        },
+        {
+          "offset": 297,
+          "replacement_hex": "f4"
+        },
+        {
+          "offset": 345,
+          "replacement_hex": "80"
+        },
+        {
+          "offset": 428,
+          "replacement_hex": "0012"
+        },
+        {
+          "offset": 656,
+          "replacement_hex": "0012"
+        },
+        {
+          "offset": 768,
+          "replacement_hex": "2e7061746368"
+        },
+        {
+          "offset": 776,
+          "replacement_hex": "301b"
+        },
+        {
+          "offset": 781,
+          "replacement_hex": "5002"
+        },
+        {
+          "offset": 785,
+          "replacement_hex": "1c"
+        },
+        {
+          "offset": 789,
+          "replacement_hex": "1e02"
+        },
+        {
+          "offset": 804,
+          "replacement_hex": "20"
+        },
+        {
+          "offset": 807,
+          "replacement_hex": "602e706174636864"
+        },
+        {
+          "offset": 816,
+          "replacement_hex": "20"
+        },
+        {
+          "offset": 821,
+          "replacement_hex": "7002"
+        },
+        {
+          "offset": 825,
+          "replacement_hex": "02"
+        },
+        {
+          "offset": 829,
+          "replacement_hex": "3a02"
+        },
+        {
+          "offset": 844,
+          "replacement_hex": "40"
+        },
+        {
+          "offset": 847,
+          "replacement_hex": "c0"
+        },
+        {
+          "offset": 10615,
+          "replacement_hex": "e8841a020090"
+        },
+        {
+          "offset": 10633,
+          "replacement_hex": "e8721a020090"
+        },
+        {
+          "offset": 11462,
+          "replacement_hex": "0a"
+        },
+        {
+          "offset": 11734,
+          "replacement_hex": "e83518020090"
+        },
+        {
+          "offset": 11863,
+          "replacement_hex": "e8d41702"
+        },
+        {
+          "offset": 11868,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 20528,
+          "replacement_hex": "e95bf601009090"
+        },
+        {
+          "offset": 24005,
+          "replacement_hex": "e826e901009090"
+        },
+        {
+          "offset": 29411,
+          "replacement_hex": "0a"
+        },
+        {
+          "offset": 29540,
+          "replacement_hex": "e8a7d201"
+        },
+        {
+          "offset": 29545,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 29648,
+          "replacement_hex": "e88bd201009090909090"
+        },
+        {
+          "offset": 32075,
+          "replacement_hex": "e8b0c601"
+        },
+        {
+          "offset": 32080,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 32093,
+          "replacement_hex": "e89ec601"
+        },
+        {
+          "offset": 32098,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 46272,
+          "replacement_hex": "e94d6d0000"
+        },
+        {
+          "offset": 46805,
+          "replacement_hex": "e8268d01"
+        },
+        {
+          "offset": 46810,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 46823,
+          "replacement_hex": "e8148d01"
+        },
+        {
+          "offset": 46828,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 46833,
+          "replacement_hex": "9b9401"
+        },
+        {
+          "offset": 47135,
+          "replacement_hex": "e83c8c01"
+        },
+        {
+          "offset": 47140,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 47322,
+          "replacement_hex": "e8218b01"
+        },
+        {
+          "offset": 47327,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 47361,
+          "replacement_hex": "e8ba8b01"
+        },
+        {
+          "offset": 47366,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 47385,
+          "replacement_hex": "e8228c01"
+        },
+        {
+          "offset": 47390,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 47421,
+          "replacement_hex": "e8be8a01"
+        },
+        {
+          "offset": 47426,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 47460,
+          "replacement_hex": "e8978b01"
+        },
+        {
+          "offset": 47465,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 47484,
+          "replacement_hex": "e8ef8b01"
+        },
+        {
+          "offset": 47489,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 47499,
+          "replacement_hex": "e8108c010085c00f84770200009090"
+        },
+        {
+          "offset": 47728,
+          "replacement_hex": "e8eb9001"
+        },
+        {
+          "offset": 47733,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 48065,
+          "replacement_hex": "8e01"
+        },
+        {
+          "offset": 48137,
+          "replacement_hex": "e8c28f01"
+        },
+        {
+          "offset": 48142,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 49254,
+          "replacement_hex": "e9d58a01"
+        },
+        {
+          "offset": 49259,
+          "replacement_hex": "909090"
+        },
+        {
+          "offset": 49289,
+          "replacement_hex": "e8a28601"
+        },
+        {
+          "offset": 49921,
+          "replacement_hex": "e84a8401009090"
+        },
+        {
+          "offset": 50105,
+          "replacement_hex": "e8c2830100909090909090"
+        },
+        {
+          "offset": 74258,
+          "replacement_hex": "803d73d10000007501c348895c2410e99f92ffff"
+        },
+        {
+          "offset": 91030,
+          "replacement_hex": "39"
+        },
+        {
+          "offset": 130429,
+          "replacement_hex": "5002"
+        },
+        {
+          "offset": 130432,
+          "replacement_hex": "5d5002"
+        },
+        {
+          "offset": 130436,
+          "replacement_hex": "385402"
+        },
+        {
+          "offset": 130440,
+          "replacement_hex": "605002"
+        },
+        {
+          "offset": 130444,
+          "replacement_hex": "b65002"
+        },
+        {
+          "offset": 130448,
+          "replacement_hex": "445402"
+        },
+        {
+          "offset": 130452,
+          "replacement_hex": "c05002"
+        },
+        {
+          "offset": 130456,
+          "replacement_hex": "ff5002"
+        },
+        {
+          "offset": 130460,
+          "replacement_hex": "4c5402"
+        },
+        {
+          "offset": 130465,
+          "replacement_hex": "5102"
+        },
+        {
+          "offset": 130468,
+          "replacement_hex": "3f5102"
+        },
+        {
+          "offset": 130472,
+          "replacement_hex": "4c5402"
+        },
+        {
+          "offset": 130476,
+          "replacement_hex": "405102"
+        },
+        {
+          "offset": 130480,
+          "replacement_hex": "6c5102"
+        },
+        {
+          "offset": 130484,
+          "replacement_hex": "4c5402"
+        },
+        {
+          "offset": 130488,
+          "replacement_hex": "705102"
+        },
+        {
+          "offset": 130492,
+          "replacement_hex": "9c5102"
+        },
+        {
+          "offset": 130496,
+          "replacement_hex": "4c5402"
+        },
+        {
+          "offset": 130500,
+          "replacement_hex": "a05102"
+        },
+        {
+          "offset": 130504,
+          "replacement_hex": "105202"
+        },
+        {
+          "offset": 130508,
+          "replacement_hex": "4c5402"
+        },
+        {
+          "offset": 130512,
+          "replacement_hex": "905202"
+        },
+        {
+          "offset": 130516,
+          "replacement_hex": "e25202"
+        },
+        {
+          "offset": 130520,
+          "replacement_hex": "545402"
+        },
+        {
+          "offset": 130524,
+          "replacement_hex": "f05202"
+        },
+        {
+          "offset": 130528,
+          "replacement_hex": "225302"
+        },
+        {
+          "offset": 130532,
+          "replacement_hex": "4c5402"
+        },
+        {
+          "offset": 130536,
+          "replacement_hex": "505302"
+        },
+        {
+          "offset": 130540,
+          "replacement_hex": "7f5302"
+        },
+        {
+          "offset": 130544,
+          "replacement_hex": "4c5402"
+        },
+        {
+          "offset": 130548,
+          "replacement_hex": "805302"
+        },
+        {
+          "offset": 130552,
+          "replacement_hex": "365402"
+        },
+        {
+          "offset": 130556,
+          "replacement_hex": "445402"
+        },
+        {
+          "offset": 130816,
+          "replacement_hex": "0058"
+        },
+        {
+          "offset": 130820,
+          "replacement_hex": "3013"
+        },
+        {
+          "offset": 135828,
+          "replacement_hex": "09"
+        },
+        {
+          "offset": 135836,
+          "replacement_hex": "09"
+        },
+        {
+          "offset": 136056,
+          "replacement_hex": "39"
+        },
+        {
+          "offset": 136516,
+          "replacement_hex": "39"
+        }
+      ],
+      "layout": {
+        "patch_fill": {
+          "output_offset": 138752,
+          "length": 7168,
+          "byte": 204
+        },
+        "patch_data_zero": {
+          "output_offset": 145920,
+          "length": 512
+        },
+        "dialog_copy": {
+          "input_offset": 130912,
+          "output_offset": 140800,
+          "length": 4852,
+          "source": "copied from the user's verified input at runtime"
+        },
+        "dialog_writes": [
+          {
+            "relative_offset": 16,
+            "replacement_hex": "6f"
+          },
+          {
+            "relative_offset": 2070,
+            "replacement_hex": "d1"
+          },
+          {
+            "relative_offset": 2102,
+            "replacement_hex": "d1"
+          },
+          {
+            "relative_offset": 4534,
+            "replacement_hex": "d3"
+          },
+          {
+            "relative_offset": 4574,
+            "replacement_hex": "d3"
+          }
+        ],
+        "dialog_append": {
+          "relative_offset": 4852,
+          "data_hex": "0000000000100000030001505d01c00042000a007e040000ffff800041006e00740069002d0061006c0069006100730069006e006700000000000000",
+          "description": "Anti-aliasing checkbox template"
+        }
+      }
+    },
+    "scheduler_hardening": {
+      "description": "Final UI scheduler hardening applied in memory before any output is written.",
+      "overlap_writes": [
+        {
+          "offset": 270,
+          "replacement_hex": "0c"
+        },
+        {
+          "offset": 293,
+          "replacement_hex": "82"
+        },
+        {
+          "offset": 297,
+          "replacement_hex": "fa"
+        },
+        {
+          "offset": 345,
+          "replacement_hex": "f0"
+        },
+        {
+          "offset": 425,
+          "replacement_hex": "c4"
+        },
+        {
+          "offset": 428,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 848,
+          "replacement_hex": "2e7363686564"
+        },
+        {
+          "offset": 856,
+          "replacement_hex": "4823"
+        },
+        {
+          "offset": 861,
+          "replacement_hex": "8002"
+        },
+        {
+          "offset": 865,
+          "replacement_hex": "24"
+        },
+        {
+          "offset": 869,
+          "replacement_hex": "3c02"
+        },
+        {
+          "offset": 884,
+          "replacement_hex": "20"
+        },
+        {
+          "offset": 887,
+          "replacement_hex": "602e736368646174"
+        },
+        {
+          "offset": 896,
+          "replacement_hex": "2002"
+        },
+        {
+          "offset": 901,
+          "replacement_hex": "b002"
+        },
+        {
+          "offset": 905,
+          "replacement_hex": "04"
+        },
+        {
+          "offset": 909,
+          "replacement_hex": "6002"
+        },
+        {
+          "offset": 924,
+          "replacement_hex": "40"
+        },
+        {
+          "offset": 927,
+          "replacement_hex": "c02e6d656e75"
+        },
+        {
+          "offset": 936,
+          "replacement_hex": "9016"
+        },
+        {
+          "offset": 941,
+          "replacement_hex": "c002"
+        },
+        {
+          "offset": 945,
+          "replacement_hex": "18"
+        },
+        {
+          "offset": 949,
+          "replacement_hex": "6402"
+        },
+        {
+          "offset": 964,
+          "replacement_hex": "20"
+        },
+        {
+          "offset": 967,
+          "replacement_hex": "602e6d656e7564"
+        },
+        {
+          "offset": 976,
+          "replacement_hex": "30"
+        },
+        {
+          "offset": 981,
+          "replacement_hex": "e002"
+        },
+        {
+          "offset": 985,
+          "replacement_hex": "02"
+        },
+        {
+          "offset": 989,
+          "replacement_hex": "7c02"
+        },
+        {
+          "offset": 1004,
+          "replacement_hex": "40"
+        },
+        {
+          "offset": 1007,
+          "replacement_hex": "c0"
+        },
+        {
+          "offset": 11176,
+          "replacement_hex": "e8138a020090"
+        },
+        {
+          "offset": 11463,
+          "replacement_hex": "e8d488020090"
+        },
+        {
+          "offset": 11704,
+          "replacement_hex": "e86349020090"
+        },
+        {
+          "offset": 28596,
+          "replacement_hex": "e8074602"
+        },
+        {
+          "offset": 28601,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 28654,
+          "replacement_hex": "e8cd4502"
+        },
+        {
+          "offset": 28659,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 29416,
+          "replacement_hex": "e8b34202"
+        },
+        {
+          "offset": 29421,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 29449,
+          "replacement_hex": "e8b24202"
+        },
+        {
+          "offset": 29454,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 29502,
+          "replacement_hex": "e8fd0302"
+        },
+        {
+          "offset": 29507,
+          "replacement_hex": "90"
+        },
+        {
+          "offset": 35364,
+          "replacement_hex": "e8972b02"
+        },
+        {
+          "offset": 35369,
+          "replacement_hex": "90"
+        }
+      ],
+      "overlap_changed_bytes": 113,
+      "append": {
+        "output_offset": 146432,
+        "length": 16896,
+        "payload_filename": "scheduler_patch_payload.bin",
+        "payload_sha256": "c3c6519ff86488fb483074b98f97143de623be99c4da0508fb4a2b733ff4f529"
+      }
+    }
+  },
+  "host_payload": {
+    "filename": "host_patch_payload.bin",
+    "size": 2256,
+    "sha256": "e8f8f8699236a27b6573250df9047b78f61e6b31b59985492859a45192d13473",
+    "segments": [
+      {
+        "payload_offset": 0,
+        "output_offset": 138752,
+        "length": 2048
+      },
+      {
+        "payload_offset": 2048,
+        "output_offset": 145712,
+        "length": 208
+      }
+    ],
+    "origin": "DeViLhoOD-authored bridge and loader data only"
+  },
+  "scheduler_payload": {
+    "filename": "scheduler_patch_payload.bin",
+    "size": 16896,
+    "sha256": "c3c6519ff86488fb483074b98f97143de623be99c4da0508fb4a2b733ff4f529",
+    "origin": "DeViLhoOD-authored scheduler bridge/code/data/unwind material"
+  },
+  "dx12_runtime": {
+    "filename": "dx12_runtime_payload.bin",
+    "size": 29184,
+    "sha256": "46080a0c060b179bc7a5f0344b2eb8b9b0431eb7f8a67273a1a5bab762b6aee5",
+    "output_filename": "foo_enhanced_spectrum_analyzer_dx12.dll",
+    "output_sha256": "46080a0c060b179bc7a5f0344b2eb8b9b0431eb7f8a67273a1a5bab762b6aee5",
+    "origin": "independently authored DeViLhoOD D3D12 sidecar"
+  },
+  "invariants": {
+    "single_step_user_operation": true,
+    "accepted_input": "exact untouched upstream 1.9.2.0 x64 DLL only",
+    "pre_scheduler_host_written_to_disk": false,
+    "base_changed_bytes_within_input": 341,
+    "scheduler_overlap_changed_bytes": 113,
+    "total_appended_host_bytes": 24576,
+    "upstream_dll_included": false,
+    "modified_upstream_dll_included": false,
+    "outputs_written_transactionally": true
+  }
+}

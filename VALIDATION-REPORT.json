@@ -1,0 +1,56 @@
+{
+  "result": "PASS",
+  "release": "1.9.2.9-community-dx12-x64-scheduler-hardened",
+  "patcher_version": "3.0.0",
+  "verified_input": {
+    "size": 138752,
+    "sha256": "7d49351661573a9ee27c8578ecdc66678289d2bdb531b43a1185df76ddb16b54"
+  },
+  "verified_outputs": {
+    "host": {
+      "size": 163328,
+      "sha256": "134fdb5d5844e0df6663c04a2f7b792c375a21b47e9f85637a2ce95dcdf77148"
+    },
+    "dx12": {
+      "size": 29184,
+      "sha256": "46080a0c060b179bc7a5f0344b2eb8b9b0431eb7f8a67273a1a5bab762b6aee5"
+    }
+  },
+  "reconstruction": {
+    "single_step_from_upstream_1_9_2_0": true,
+    "intermediate_written_to_disk": false,
+    "base_payload_sha256": "e8f8f8699236a27b6573250df9047b78f61e6b31b59985492859a45192d13473",
+    "scheduler_payload_sha256": "c3c6519ff86488fb483074b98f97143de623be99c4da0508fb4a2b733ff4f529",
+    "dx12_payload_sha256": "46080a0c060b179bc7a5f0344b2eb8b9b0431eb7f8a67273a1a5bab762b6aee5"
+  },
+  "runtime_qualification": "Final TEST03 scheduler host was user-confirmed to eliminate the context-menu pause reproduction; the public patcher must reconstruct that exact byte identity.",
+  "checks": {
+    "manifest_identity": true,
+    "exact_upstream_input_contract": true,
+    "payload_identities": true,
+    "single_step_reconstructs_exact_final_host": true,
+    "single_step_reconstructs_exact_dx12_sidecar": true,
+    "intermediate_not_written": true,
+    "input_unchanged": true,
+    "verify_only_writes_nothing": true,
+    "wrong_hash_rejected": true,
+    "wrong_size_rejected": true,
+    "existing_outputs_refused": true,
+    "corrupt_manifest_rejected": true,
+    "corrupt_base_payload_rejected": true,
+    "corrupt_scheduler_payload_rejected": true,
+    "corrupt_dx12_payload_rejected": true,
+    "no_upstream_or_modified_analyzer_dll_in_public_archive": true,
+    "python_syntax": true,
+    "powershell_integrity_contract_static_audit": true,
+    "no_network_or_registry_operations": true,
+    "final_byte_identity_matches_runtime_confirmed_TEST03": true
+  },
+  "test_summary": {
+    "passed": 20,
+    "total": 20,
+    "python_runtime_tested": true,
+    "powershell_runtime_tested": false,
+    "powershell_note": "PowerShell 5.1 is not available in the Linux packaging environment; the script was updated in parallel and statically audited."
+  }
+}
