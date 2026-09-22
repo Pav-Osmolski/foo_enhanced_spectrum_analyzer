@@ -12,20 +12,20 @@ param(
 Set-StrictMode -Version 3.0
 $ErrorActionPreference = 'Stop'
 
-$ExpectedManifestSha256 = '6520a8093ebbbdea6e3da67b61723732c438850dbbe947c88de31971f9d224c3'
+$ExpectedManifestSha256 = '0f629033b8f182474f0633b8640f7acc6800084925b5a81ebc0325025a87a03b'
 $ExpectedHostPayloadSha256 = 'e8f8f8699236a27b6573250df9047b78f61e6b31b59985492859a45192d13473'
-$ExpectedSchedulerPayloadSha256 = 'c3c6519ff86488fb483074b98f97143de623be99c4da0508fb4a2b733ff4f529'
-$ExpectedDx12PayloadSha256 = '46080a0c060b179bc7a5f0344b2eb8b9b0431eb7f8a67273a1a5bab762b6aee5'
+$ExpectedSchedulerPayloadSha256 = '8bcf0ac2fe115710ce45eba8bda8a64fe2b8ce8f0b3cef0bab2e5b5c4b482431'
+$ExpectedDx12PayloadSha256 = '151d54a4626312f1aa6acb4aae54fad2e199b67cf008e7367196ffd7d3239541'
 $ExpectedInputSha256 = '7d49351661573a9ee27c8578ecdc66678289d2bdb531b43a1185df76ddb16b54'
 $ExpectedPreSchedulerSha256 = 'd5f001d863429fc3f9c29e8aa4557bb5660da1d1f9194effb239ba1e0b56d859'
-$ExpectedHostSha256 = '134fdb5d5844e0df6663c04a2f7b792c375a21b47e9f85637a2ce95dcdf77148'
-$ExpectedDx12Sha256 = '46080a0c060b179bc7a5f0344b2eb8b9b0431eb7f8a67273a1a5bab762b6aee5'
+$ExpectedHostSha256 = 'b0e4df422ebb54246167a711cf15a8bae6a7bc544e73dd0cbadd43995ca4efe8'
+$ExpectedDx12Sha256 = '151d54a4626312f1aa6acb4aae54fad2e199b67cf008e7367196ffd7d3239541'
 $ExpectedInputSize = 138752
 $ExpectedPreSchedulerSize = 146432
 $ExpectedHostSize = 163328
 $ExpectedDx12Size = 29184
 $ExpectedBaseChangedBytes = 341
-$ExpectedSchedulerChangedBytes = 113
+$ExpectedSchedulerChangedBytes = 125
 $CreatedOutputs = New-Object 'System.Collections.Generic.List[string]'
 
 function Assert-Condition {
@@ -106,8 +106,8 @@ try {
     Assert-Condition ((Get-ByteSha256 $Dx12Payload) -eq $ExpectedDx12PayloadSha256) 'dx12_runtime_payload.bin failed its integrity check. Re-extract the release ZIP.'
 
     Assert-Condition ($Manifest.format -eq 'devilhood-esa-patch-v3') 'Unsupported patch-manifest format.'
-    Assert-Condition ($Manifest.release -eq '1.9.2.9-community-dx12-x64-scheduler-hardened') 'Unexpected patch release identity.'
-    Assert-Condition ($Manifest.patcher_version -eq '3.0.0') 'Unexpected patcher version.'
+    Assert-Condition ($Manifest.release -eq '1.9.3.0-community-dx12-x64-final') 'Unexpected patch release identity.'
+    Assert-Condition ($Manifest.patcher_version -eq '3.2.0') 'Unexpected patcher version.'
     Assert-Condition ($Manifest.producer -eq 'DeViLhoOD') 'Unexpected patch producer identity.'
     Assert-Condition (([int]$Manifest.host.input.size -eq $ExpectedInputSize) -and ($Manifest.host.input.sha256 -eq $ExpectedInputSha256)) 'The manifest has unexpected input properties.'
     Assert-Condition (([int]$Manifest.host.pre_scheduler_output.size -eq $ExpectedPreSchedulerSize) -and ($Manifest.host.pre_scheduler_output.sha256 -eq $ExpectedPreSchedulerSha256)) 'The manifest has unexpected in-memory base-transform properties.'
@@ -186,7 +186,7 @@ try {
     Assert-Condition ([System.BitConverter]::ToUInt16($Base, $DialogOutput + 16) -eq 111) 'The patched dialog item count is invalid.'
     Assert-Condition ((Get-ByteSha256 $Base) -eq $ExpectedPreSchedulerSha256) 'The in-memory base reconstruction failed verification.'
 
-    # Apply the final scheduler hardening in memory; never write the intermediate host.
+    # Apply the final 1.9.3.0 hardening layer in memory; never write the intermediate host.
     [byte[]]$Host = New-Object byte[] $ExpectedHostSize
     [System.Array]::Copy($Base, 0, $Host, 0, $Base.Length)
     $PreviousEnd = 0
@@ -227,7 +227,7 @@ try {
     Write-NewFile $Dx12Output $Dx12Payload
     $CreatedOutputs.Add($Dx12Output)
 
-    Write-Host 'PASS: Enhanced Spectrum Analyzer 1.9.2.9 Community DX12 was generated directly from upstream 1.9.2.0.' -ForegroundColor Green
+    Write-Host 'PASS: Enhanced Spectrum Analyzer 1.9.3.0 Community DX12 was generated directly from upstream 1.9.2.0.' -ForegroundColor Green
     Write-Host "Host:  $HostOutput"
     Write-Host "DX12:  $Dx12Output"
     Write-Host "Host SHA-256: $ExpectedHostSha256"

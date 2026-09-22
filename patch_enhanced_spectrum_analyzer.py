@@ -1,23 +1,23 @@
 #!/usr/bin/env python3
-"""One-step Enhanced Spectrum Analyzer 1.9.2.0 x64 -> final 1.9.2.9 Community DX12 patcher."""
+"""One-step Enhanced Spectrum Analyzer 1.9.2.0 x64 -> final 1.9.3.0 Community DX12 patcher."""
 from __future__ import annotations
 import argparse, hashlib, json, os, sys
 from pathlib import Path
 
-EXPECTED_MANIFEST_SHA256 = "6520a8093ebbbdea6e3da67b61723732c438850dbbe947c88de31971f9d224c3"
+EXPECTED_MANIFEST_SHA256 = "0f629033b8f182474f0633b8640f7acc6800084925b5a81ebc0325025a87a03b"
 EXPECTED_HOST_PAYLOAD_SHA256 = "e8f8f8699236a27b6573250df9047b78f61e6b31b59985492859a45192d13473"
-EXPECTED_SCHEDULER_PAYLOAD_SHA256 = "c3c6519ff86488fb483074b98f97143de623be99c4da0508fb4a2b733ff4f529"
-EXPECTED_DX12_PAYLOAD_SHA256 = "46080a0c060b179bc7a5f0344b2eb8b9b0431eb7f8a67273a1a5bab762b6aee5"
+EXPECTED_SCHEDULER_PAYLOAD_SHA256 = "8bcf0ac2fe115710ce45eba8bda8a64fe2b8ce8f0b3cef0bab2e5b5c4b482431"
+EXPECTED_DX12_PAYLOAD_SHA256 = "151d54a4626312f1aa6acb4aae54fad2e199b67cf008e7367196ffd7d3239541"
 EXPECTED_INPUT_SHA256 = "7d49351661573a9ee27c8578ecdc66678289d2bdb531b43a1185df76ddb16b54"
 EXPECTED_PRE_SCHEDULER_SHA256 = "d5f001d863429fc3f9c29e8aa4557bb5660da1d1f9194effb239ba1e0b56d859"
-EXPECTED_HOST_SHA256 = "134fdb5d5844e0df6663c04a2f7b792c375a21b47e9f85637a2ce95dcdf77148"
-EXPECTED_DX12_SHA256 = "46080a0c060b179bc7a5f0344b2eb8b9b0431eb7f8a67273a1a5bab762b6aee5"
+EXPECTED_HOST_SHA256 = "b0e4df422ebb54246167a711cf15a8bae6a7bc544e73dd0cbadd43995ca4efe8"
+EXPECTED_DX12_SHA256 = "151d54a4626312f1aa6acb4aae54fad2e199b67cf008e7367196ffd7d3239541"
 EXPECTED_INPUT_SIZE = 138752
 EXPECTED_PRE_SCHEDULER_SIZE = 146432
 EXPECTED_HOST_SIZE = 163328
 EXPECTED_DX12_SIZE = 29184
 EXPECTED_BASE_CHANGED_BYTES = 341
-EXPECTED_SCHEDULER_CHANGED_BYTES = 113
+EXPECTED_SCHEDULER_CHANGED_BYTES = 125
 
 class PatchError(RuntimeError): pass
 def sha256(v: bytes)->str: return hashlib.sha256(v).hexdigest()
@@ -42,7 +42,7 @@ def load_release(sd: Path):
     require(sha256(hp)==EXPECTED_HOST_PAYLOAD_SHA256,'host_patch_payload.bin failed its integrity check. Re-extract the release ZIP.')
     require(sha256(sp)==EXPECTED_SCHEDULER_PAYLOAD_SHA256,'scheduler_patch_payload.bin failed its integrity check. Re-extract the release ZIP.')
     require(sha256(dx)==EXPECTED_DX12_PAYLOAD_SHA256,'dx12_runtime_payload.bin failed its integrity check. Re-extract the release ZIP.')
-    require(m.get('format')=='devilhood-esa-patch-v3' and m.get('patcher_version')=='3.0.0' and m.get('producer')=='DeViLhoOD','Unexpected patch-manifest identity.')
+    require(m.get('format')=='devilhood-esa-patch-v3' and m.get('release')=='1.9.3.0-community-dx12-x64-final' and m.get('patcher_version')=='3.2.0' and m.get('producer')=='DeViLhoOD','Unexpected patch-manifest identity.')
     h=m.get('host',{})
     require(h.get('input',{}).get('size')==EXPECTED_INPUT_SIZE and h.get('input',{}).get('sha256')==EXPECTED_INPUT_SHA256,'Unexpected input contract in manifest.')
     require(h.get('pre_scheduler_output',{}).get('size')==EXPECTED_PRE_SCHEDULER_SIZE and h.get('pre_scheduler_output',{}).get('sha256')==EXPECTED_PRE_SCHEDULER_SHA256,'Unexpected base-transform contract in manifest.')
@@ -129,7 +129,7 @@ def write_pair(d: Path,h: bytes,dx: bytes):
     return hp,dp
 
 def args():
-    p=argparse.ArgumentParser(description='One-step patch of exact Enhanced Spectrum Analyzer 1.9.2.0 x64 to the final DeViLhoOD 1.9.2.9 Community DX12 build.')
+    p=argparse.ArgumentParser(description='One-step patch of exact Enhanced Spectrum Analyzer 1.9.2.0 x64 to the final DeViLhoOD 1.9.3.0 Community DX12 build.')
     p.add_argument('input',type=Path,help='path to original 1.9.2.0 x64 DLL'); p.add_argument('-o','--output-dir',type=Path); p.add_argument('--verify-only',action='store_true'); return p.parse_args()
 def main():
     a=args()
@@ -138,6 +138,6 @@ def main():
         m,hp,sp,dx=load_release(Path(__file__).resolve().parent); source=read_bytes(ip,'input DLL'); host=apply_scheduler(reconstruct_base(source,m,hp),m,sp); dx=verify_dx12(dx)
         if a.verify_only:
             print('PASS: exact upstream input and all payloads reconstruct the final release in one operation.'); print('Host SHA-256:',EXPECTED_HOST_SHA256); print('DX12 SHA-256:',EXPECTED_DX12_SHA256); return 0
-        h,d=write_pair(od,host,dx); print('PASS: Enhanced Spectrum Analyzer 1.9.2.9 Community DX12 was generated directly from upstream 1.9.2.0.'); print('Host: ',h); print('DX12: ',d); print('Host SHA-256:',EXPECTED_HOST_SHA256); print('DX12 SHA-256:',EXPECTED_DX12_SHA256); print('The original DLL was not modified.'); return 0
+        h,d=write_pair(od,host,dx); print('PASS: Enhanced Spectrum Analyzer 1.9.3.0 Community DX12 was generated directly from upstream 1.9.2.0.'); print('Host: ',h); print('DX12: ',d); print('Host SHA-256:',EXPECTED_HOST_SHA256); print('DX12 SHA-256:',EXPECTED_DX12_SHA256); print('The original DLL was not modified.'); return 0
     except (PatchError,OSError) as e: print('ERROR:',e,file=sys.stderr); return 1
 if __name__=='__main__': raise SystemExit(main())

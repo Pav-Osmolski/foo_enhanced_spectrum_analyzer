@@ -7,7 +7,7 @@
 3. Supply the exact untouched **1.9.2.0 x64** DLL (`7d49351661573a9ee27c8578ecdc66678289d2bdb531b43a1185df76ddb16b54`):
    - place it beside the scripts as `foo_enhanced_spectrum_analyzer.dll` and double-click `Patch-EnhancedSpectrumAnalyzer.cmd`; or
    - drag the DLL onto `Patch-EnhancedSpectrumAnalyzer.cmd`.
-4. The patcher reconstructs the complete final scheduler-hardened 1.9.2.9 host in memory, verifies it, and writes the final matched pair to `patched\`.
+4. The patcher reconstructs the complete final runtime-validated 1.9.3.0 host in memory, verifies it, and writes the final matched pair to `patched\`.
 
 There is no intermediate installation or second patching stage.
 

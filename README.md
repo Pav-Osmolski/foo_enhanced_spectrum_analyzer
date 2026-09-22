@@ -1,12 +1,14 @@
-# Enhanced Spectrum Analyzer 1.9.2.9 — Community DX12 x64 Public Patcher
+# Enhanced Spectrum Analyzer 1.9.3.0 - Community DX12 x64 Public Patcher
 
 Original **Enhanced Spectrum Analyzer** by **Crossover**. Community maintenance, DX12 enhancement work and release packaging by **DeViLhoOD**.
 
 This is an unofficial x64 community continuation built from the upstream 1.9.2.0 component. It is not affiliated with or endorsed by Crossover, foobar2000 or its developers.
 
+Special thanks to **StyxCrosser** for extensive compatibility and regression testing of the final scheduler, anti-aliasing, fullscreen and unsupported-DX12 fixes.
+
 ## One-step public patcher
 
-This package patches the **exact untouched upstream 1.9.2.0 x64 DLL directly to the final scheduler-hardened 1.9.2.9 build in one operation**. No earlier community build and no second patching stage are required.
+This package patches the **exact untouched upstream 1.9.2.0 x64 DLL directly to the final runtime-validated 1.9.3.0 build in one operation**. No earlier community build and no second patching stage are required.
 
 Required input:
 
@@ -21,8 +23,8 @@ Generated pair:
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `foo_enhanced_spectrum_analyzer.dll` | 163,328 | `134fdb5d5844e0df6663c04a2f7b792c375a21b47e9f85637a2ce95dcdf77148` |
-| `foo_enhanced_spectrum_analyzer_dx12.dll` | 29,184 | `46080a0c060b179bc7a5f0344b2eb8b9b0431eb7f8a67273a1a5bab762b6aee5` |
+| `foo_enhanced_spectrum_analyzer.dll` | 163,328 | `b0e4df422ebb54246167a711cf15a8bae6a7bc544e73dd0cbadd43995ca4efe8` |
+| `foo_enhanced_spectrum_analyzer_dx12.dll` | 29,184 | `151d54a4626312f1aa6acb4aae54fad2e199b67cf008e7367196ffd7d3239541` |
 
 The original input is read-only and preserved. The patcher verifies every payload and the complete final hashes before writing output, and refuses to overwrite existing generated files.
 
@@ -37,8 +39,8 @@ The original input is read-only and preserved. The patcher verifies every payloa
 
 ### Rendering quality and configuration
 
-- Improved high-quality GDI+ anti-aliasing and added a persisted Anti-aliasing option.
-- Extended anti-aliasing to gradient spectrum boundaries while preserving the original FFT/signal-processing behaviour.
+- Added persisted GDI+ anti-aliasing and gradient-boundary smoothing while preserving the original FFT/signal-processing behaviour.
+- Corrected the final GDI+ AA mode from the unnecessarily expensive 8x8 setting to the intended 8x4 mode.
 - Corrected configuration control alignment, spacing and visual consistency.
 
 ### Native DirectX 12 renderer
@@ -48,6 +50,7 @@ The original input is read-only and preserved. The patcher verifies every payloa
 - Uses an isolated DX12 sidecar architecture.
 - Fixed loader, PE layout, descriptor-heap ABI and command-list vtable faults encountered during development.
 - Replaced triangle-fan gradients with per-bin trapezoids, closed hollow gradient edges, fixed live-resize distortion and removed the residual stopped-playback baseline artefact.
+- Caches a conclusive `DXGI_ERROR_UNSUPPORTED` device-creation result for the current foobar2000 session so unsupported hardware falls back to GDI without repeated DX12 retries; transient failures retain normal recovery behaviour.
 
 ### Native DX12 overlays
 
@@ -56,13 +59,14 @@ The original input is read-only and preserved. The patcher verifies every payloa
 - Native Peak Detector markers/frequency values and Calibration Line.
 - Preserved Peak, RMS and Peak Max elements and the original overlay ordering/settings.
 
-### Responsiveness and UI scheduling
+### Responsiveness, fullscreen and UI scheduling
 
-- Added bounded/coalesced recovery around the original 10 ms timer route.
-- Diagnosed the remaining rapid right-click/context-menu stalls with Windows Performance Recorder as UI-thread modal-menu starvation rather than a renderer fault.
-- Added a thread-local `WH_MSGFILTER` / `MSGF_MENU` bridge that safely services the existing `WM_TIMER` path during modal menu loops.
-- Added rate limiting, re-entrancy protection and multi-panel hook lifetime management.
-- Runtime testing confirmed the previously repeatable 80–133 ms animation hesitations were eliminated.
+- Diagnosed rapid context-menu stalls with Windows Performance Recorder as UI-thread modal-menu starvation rather than a GDI/DX12 renderer failure.
+- Retained one original 10 ms Windows timer as the **only** normal-playback render cadence, removing the duplicate 10 ms timer-queue source that could effectively double-drive rendering and starve foobar2000's UI thread.
+- Kept a thread-local `WH_MSGFILTER` / `MSGF_MENU` bridge that services the existing `WM_TIMER` route only while modal menus are active, with rate limiting, re-entrancy protection and multi-panel lifetime management.
+- Fixed fullscreen playback-time input starvation: double-click, Escape and context-menu interaction remain responsive while music is playing.
+- Added automatic fullscreen UI Theme Integration refresh using the component's existing colour-assignment path at a low update rate, avoiding per-frame theme work.
+- Runtime testing confirmed smooth nested and fullscreen operation with AA enabled and the DX12 sidecar present, including testing on hardware without D3D12 support.
 
 ### Release integrity
 

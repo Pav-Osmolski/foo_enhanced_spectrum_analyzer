@@ -2,6 +2,23 @@
 
 This changelog covers the **community x64 maintenance and DX12 enhancement lineage** built from Crossover's upstream Enhanced Spectrum Analyzer 1.9.2.0. Version numbers after 1.9.2.0 refer to this unofficial community branch and do not imply an official release by the original author.
 
+## 1.9.3.0 — AA, scheduler, fullscreen and fallback optimisation — 2026-09-22
+
+- Began as a post-1.9.2.9 compatibility/performance investigation after reports that foobar2000 could become unresponsive during playback even though the spectrum animation itself remained smooth.
+- Added the private `PERF_DIAGNOSTICS_PRIVATE` builds to isolate anti-aliasing cost from the DX12 sidecar and the normal GDI rendering path. Testing showed that anti-aliasing amplified the slowdown but was not the underlying cause of the fullscreen/UI starvation.
+- `TEST01` corrected the GDI+ smoothing mode from the unintended `AntiAlias8x8` selection to the intended, faster `AntiAlias8x4` mode while retaining anti-aliased rendering.
+- `TEST04` identified and removed the duplicate normal-playback 10 ms timer-queue render source left active alongside the component's original 10 ms Windows timer. The original timer is again the only normal-playback render cadence.
+- `TEST04` retained the 1.9.2.9 thread-local `WH_MSGFILTER` / `MSGF_MENU` modal-menu bridge, preserving the context-menu animation fix without double-driving rendering during ordinary playback.
+- `TEST04` eliminated the playback-time UI starvation seen most clearly in fullscreen mode and restored immediate fullscreen exit/input handling through double-click, Escape and the context menu while playback is active.
+- Confirmed that anti-aliasing can remain enabled in both nested and fullscreen instances without the severe responsiveness problem once the duplicate normal-playback render source is removed.
+- `TEST05` added low-rate automatic fullscreen UI Theme Integration refresh through the component's existing colour-assignment path, allowing an already-open fullscreen instance to follow foobar2000 theme-colour changes without manually invoking **Assign UI colors**.
+- `TEST05` updated the DX12 sidecar so a conclusive `DXGI_ERROR_UNSUPPORTED` result from `D3D12CreateDevice` is cached for the current foobar2000 session. Unsupported hardware falls back to GDI without repeated device-creation attempts, while transient DX12 failures retain the existing recovery behaviour.
+- Runtime-tested the final TEST04/TEST05 lineage with nested and fullscreen instances, AA enabled in both, theme-colour changes and the DX12 sidecar present on hardware without DX12 support. Performance and visuals were confirmed smooth, with fullscreen colours updating automatically after the expected low-rate refresh delay.
+- Special thanks to **StyxCrosser** for extensive compatibility and regression testing throughout the `PERF_DIAGNOSTICS_PRIVATE` through `TEST05` cycle.
+- Promoted the runtime-validated TEST05 logic to **1.9.3.0**, including the foobar component version string and Windows file/product VERSIONINFO metadata.
+- Rebuilt the public package as a single-step patcher from the exact untouched upstream 1.9.2.0 x64 DLL directly to 1.9.3.0; no intermediate community build is required.
+- Updated manifests, changed-range audit, validation metadata and checksums for the 1.9.3.0 release.
+
 ## 1.9.2.9 — scheduler-hardened refresh — 2026-09-21
 
 - Fixed the remaining brief spectrum-animation pauses triggered by rapid context-menu interaction in the playlist, Waveform Minibar and other foobar2000 panels.
